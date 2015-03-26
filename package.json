@@ -1,0 +1,24 @@
+{
+  "name": "react-native-button",
+  "version": "0.0.1",
+  "description": "A button for React apps",
+  "main": "Button.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ide/react-native-button.git"
+  },
+  "keywords": [
+    "react-native",
+    "button",
+    "component"
+  ],
+  "author": "James Ide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ide/react-native-button/issues"
+  },
+  "homepage": "https://github.com/ide/react-native-button"
+}
