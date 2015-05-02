@@ -6,7 +6,10 @@ var {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } = React;
+
+var coalesceNonElementChildren = require('./coalesceNonElementChildren');
 
 var systemButtonOpacity = 0.2;
 
@@ -28,15 +31,34 @@ var Button = React.createClass({
       touchableProps.onLongPress = this.props.onLongPress;
     }
 
-    var buttonStateStyle = this.props.disabled ? styles.disabledText : null;
-
     return (
       <TouchableOpacity {...touchableProps}>
-        <Text style={[styles.text, buttonStateStyle, this.props.style]}>
-          {this.props.children}
-        </Text>
+        {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
+  },
+
+  _renderGroupedChildren() {
+    var buttonStateStyle = this.props.disabled ? styles.disabledText : null;
+
+    var children = coalesceNonElementChildren(this.props.children, (children, index) => {
+      return (
+        <Text
+          key={index}
+          style={[styles.text, buttonStateStyle, this.props.style]}>
+          {children}
+        </Text>
+      );
+    });
+
+    switch (children.length) {
+      case 0:
+        return null;
+      case 1:
+        return children[0];
+      default:
+        return <View style={styles.group}>{children}</View>;
+    }
   },
 
   _computeActiveOpacity() {
@@ -59,7 +81,12 @@ var styles = StyleSheet.create({
   },
   disabledText: {
     color: '#dcdcdc',
-  }
+  },
+  group: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });
 
 module.exports = Button;
