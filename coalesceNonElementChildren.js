@@ -13,7 +13,6 @@ function coalesceNonElementChildren(children, coalesceNodes) {
     }
 
     if (contiguousNonElements.length) {
-      var coalescedChild = coalesceNodes(contiguousNonElements, coalescedChildren.length);
       coalescedChildren.push(
         coalesceNodes(contiguousNonElements, coalescedChildren.length)
       );
