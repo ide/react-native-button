@@ -12,7 +12,11 @@ var React = require('react-native');
 var ExampleComponent = React.createClass({
   render() {
     return (
-      <Button style={{color: 'green'}} onPress={this._handlePress}>
+      <Button
+        style={{fontSize: 20, color: 'green'}}
+        styleDisabled={{color: 'red'}}
+        onPress={this._handlePress}
+      >
         Press Me!
       </Button>
     );
