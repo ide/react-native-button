@@ -18,7 +18,7 @@ var Button = React.createClass({
     ...TouchableOpacity.propTypes,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
-    styleDisabled: Text.PropTypes.style,
+    styleDisabled: Text.propTypes.style,
   },
 
   render() {
