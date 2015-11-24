@@ -42,7 +42,7 @@ var Button = React.createClass({
   _renderGroupedChildren() {
     var {disabled} = this.props
     var style = [
-      styles.text,
+      styles.container,
       disabled ? styles.disabledText : null,
       this.props.style,
       disabled ? this.props.styleDisabled : null,
@@ -50,9 +50,11 @@ var Button = React.createClass({
 
     var children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
-        <Text key={index} style={style}>
-          {children}
-        </Text>
+        <View key={index} style={style}>
+          <Text style={styles.text}>
+            {children}
+          </Text>
+        </View>
       );
     });
 
@@ -77,12 +79,15 @@ var Button = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+  },
   text: {
     color: '#007aff',
     fontFamily: '.HelveticaNeueInterface-MediumP4',
     fontSize: 17,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center',   
   },
   disabledText: {
     color: '#dcdcdc',
