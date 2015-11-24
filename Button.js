@@ -17,7 +17,8 @@ var Button = React.createClass({
   propTypes: {
     ...TouchableOpacity.propTypes,
     disabled: PropTypes.bool,
-    style: Text.propTypes.style,
+    textStyle: Text.propTypes.style,
+    style: View.propTypes.style,
     styleDisabled: Text.propTypes.style,
   },
 
@@ -51,7 +52,7 @@ var Button = React.createClass({
     var children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
         <View key={index} style={style}>
-          <Text style={styles.text}>
+          <Text style={[styles.text, this.props.textStyle]}>
             {children}
           </Text>
         </View>
