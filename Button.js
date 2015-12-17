@@ -33,7 +33,7 @@ var Button = React.createClass({
     }
 
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID}>
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={{borderWidth: this.props.style.borderWidth, borderRadius: this.props.style.borderRadius}}>
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
