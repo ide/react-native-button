@@ -14,6 +14,7 @@ var ExampleComponent = React.createClass({
     return (
       <Button
         style={{fontSize: 20, color: 'green'}}
+        containerStyle={{borderWidth: 1, borderRadius: 6}}
         styleDisabled={{color: 'red'}}
         onPress={this._handlePress}
       >
