@@ -34,7 +34,7 @@ var Button = React.createClass({
     }
 
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID} style=this.props.containerStyle>          
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>          
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
