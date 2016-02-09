@@ -9,12 +9,12 @@ Install the button from npm with `npm install react-native-button --save`. Then,
 var Button = require('react-native-button');
 var React = require('react-native');
 
+// a simple button
 var ExampleComponent = React.createClass({
   render() {
     return (
       <Button
         style={{fontSize: 20, color: 'green'}}
-        containerStyle={{borderWidth: 1, borderRadius: 6}}
         styleDisabled={{color: 'red'}}
         onPress={this._handlePress}
       >
@@ -32,6 +32,18 @@ module.exports = ExampleComponent;
 ```
 
 The React packager will include the Button component in your app's JS package and make it available for your app to use.
+
+## Container Style
+
+You can make a button with rounded corners like this:
+
+```js
+  <Button containerStyle={{padding:10, height:45, overflow:'hidden', borderRadius:4, borderWidth: 1, backgroundColor: 'white' }}
+                   style={{fontSize: 20, color: 'green'}}
+  >
+    Press me!
+  </Button>
+```
 
 # Contributing
 
