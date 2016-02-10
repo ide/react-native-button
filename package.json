@@ -1,6 +1,6 @@
 {
   "name": "react-native-button",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A button for React apps",
   "main": "Button.js",
   "scripts": {
