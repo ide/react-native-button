@@ -16,7 +16,7 @@ var systemButtonOpacity = 0.2;
 var Button = React.createClass({
   propTypes: {
     ...TouchableOpacity.propTypes,
-    containerStyle: TouchableOpacity.propTypes.style,
+    containerStyle: View.propTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
