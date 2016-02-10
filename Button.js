@@ -16,11 +16,12 @@ var systemButtonOpacity = 0.2;
 var Button = React.createClass({
   propTypes: {
     ...TouchableOpacity.propTypes,
+    containerStyle: TouchableOpacity.propTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
   },
-
+  
   render() {
     var touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
@@ -33,7 +34,7 @@ var Button = React.createClass({
     }
 
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID}>
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>          
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
