@@ -19,8 +19,11 @@ var Button = React.createClass({
     ...TouchableOpacity.propTypes,
     containerStyle: View.propTypes.style,
     disabled: PropTypes.bool,
+    loading: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
+    styleLoading: ActivityIndicatorIOS.propTypes.style,
+    loadingColor: ActivityIndicatorIOS.propTypes.color
   },
 
   render() {
@@ -53,7 +56,7 @@ var Button = React.createClass({
     var children;
 
     if (loading) {
-        return <View {styles.group}><ActivityIndicatorIOS size='small' color={this.props.loadingColour} /></View>
+        return <ActivityIndicatorIOS size='small' color={this.props.loadingColor} style={this.props.styleLoading} />
     }
 
     var children = coalesceNonElementChildren(this.props.children, (children, index) => {
