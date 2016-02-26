@@ -7,6 +7,7 @@ var {
   Text,
   TouchableOpacity,
   View,
+  ActivityIndicatorIOS
 } = React;
 
 var coalesceNonElementChildren = require('./coalesceNonElementChildren');
@@ -18,10 +19,13 @@ var Button = React.createClass({
     ...TouchableOpacity.propTypes,
     containerStyle: View.propTypes.style,
     disabled: PropTypes.bool,
+    loading: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
+    styleLoading: ActivityIndicatorIOS.propTypes.style,
+    loadingColor: ActivityIndicatorIOS.propTypes.color
   },
-  
+
   render() {
     var touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
@@ -34,20 +38,24 @@ var Button = React.createClass({
     }
 
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>          
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
   },
 
   _renderGroupedChildren() {
-    var {disabled} = this.props
+    var {disabled, loading} = this.props
     var style = [
       styles.text,
       disabled ? styles.disabledText : null,
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
+
+    if (loading) {
+        return <ActivityIndicatorIOS size='small' color={this.props.loadingColor} style={this.props.styleLoading} />
+    }
 
     var children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
