@@ -53,8 +53,6 @@ var Button = React.createClass({
       disabled ? this.props.styleDisabled : null,
     ];
 
-    var children;
-
     if (loading) {
         return <ActivityIndicatorIOS size='small' color={this.props.loadingColor} style={this.props.styleLoading} />
     }
