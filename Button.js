@@ -16,7 +16,8 @@ var systemButtonOpacity = 0.2;
 var Button = React.createClass({
   propTypes: {
     ...TouchableOpacity.propTypes,
-    containerStyle: View.propTypes.style,
+    containerStyle: TouchableOpacity.propTypes.style,
+    containerDisabledStyle: TouchableOpacity.propTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
@@ -32,16 +33,17 @@ var Button = React.createClass({
       touchableProps.onPressOut = this.props.onPressOut;
       touchableProps.onLongPress = this.props.onLongPress;
     }
-
+    var {disabled} = this.props;
+    var containerStyle = disabled ? (this.props.containerDisabledStyle||this.props.containerStyle):this.props.containerStyle;
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>          
-        {this._renderGroupedChildren()}
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={containerStyle}>          
+        {this._renderGroupedChildren(disabled)}
       </TouchableOpacity>
     );
   },
 
-  _renderGroupedChildren() {
-    var {disabled} = this.props
+  _renderGroupedChildren(disabled) {
+    
     var style = [
       styles.text,
       disabled ? styles.disabledText : null,

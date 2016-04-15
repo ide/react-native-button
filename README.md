@@ -43,6 +43,9 @@ You can make a button with rounded corners like this:
     Press me!
   </Button>
 ```
+You can also use `containerDisabledStyle` to set the disabled Button container Style, if you
+do not set `containerDisabledStyle`, it will default use `containerStyle` when the button is
+disabled.
 
 # Contributing
 
