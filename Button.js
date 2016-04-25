@@ -34,7 +34,7 @@ var Button = React.createClass({
       touchableProps.onLongPress = this.props.onLongPress;
     }
     var {disabled} = this.props;
-    var containerStyle = disabled ? (this.props.containerDisabledStyle||this.props.containerStyle):this.props.containerStyle;
+    var containerStyle = disabled ? this.props.containerDisabledStyle:this.props.containerStyle;
     return (
       <TouchableOpacity {...touchableProps} testID={this.props.testID} style={containerStyle}>          
         {this._renderGroupedChildren(disabled)}
