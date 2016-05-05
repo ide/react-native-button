@@ -1,15 +1,16 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React,{
   PropTypes,
+} from 'react';
+import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} = React;
+} from 'react-native';
 
-var coalesceNonElementChildren = require('./coalesceNonElementChildren');
+import coalesceNonElementChildren from './coalesceNonElementChildren';
 
 var systemButtonOpacity = 0.2;
 
@@ -97,4 +98,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = Button;
+export default Button;
