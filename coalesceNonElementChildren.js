@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
 
 function coalesceNonElementChildren(children, coalesceNodes) {
   var coalescedChildren = [];
