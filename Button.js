@@ -1,9 +1,11 @@
 'use strict';
 
 var React = require('react');
-var ReactNative = require('react-native');
 var {
   PropTypes,
+} = React;
+var ReactNative = require('react-native');
+var {
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -22,7 +24,7 @@ var Button = React.createClass({
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
   },
-  
+
   render() {
     var touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
@@ -35,7 +37,7 @@ var Button = React.createClass({
     }
 
     return (
-      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>          
+      <TouchableOpacity {...touchableProps} testID={this.props.testID} style={this.props.containerStyle}>
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
