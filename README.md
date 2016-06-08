@@ -6,28 +6,29 @@ A button for React apps
 Install the button from npm with `npm install react-native-button --save`. Then, require it from your app's JavaScript files with `require('react-native-button')`.
 
 ```js
-var Button = require('react-native-button');
-var React = require('react-native');
+import React, { Component } from 'react';
+import Button from 'react-native-button';
 
-var ExampleComponent = React.createClass({
+export default class ExampleComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+  _handlePress() {
+    console.log('Pressed!');
+  }
   render() {
     return (
       <Button
         style={{fontSize: 20, color: 'green'}}
         styleDisabled={{color: 'red'}}
-        onPress={this._handlePress}
+        onPress={() => this._handlePress()}
       >
         Press Me!
       </Button>
     );
-  },
+  }
+};
 
-  _handlePress(event) {
-    console.log('Pressed!');
-  },
-});
-
-module.exports = ExampleComponent;
 ```
 
 The React packager will include the Button component in your app's JS package and make it available for your app to use.
