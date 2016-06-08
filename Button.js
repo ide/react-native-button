@@ -34,7 +34,7 @@ export default class Button extends Component {
   }
 
   _renderGroupedChildren() {
-    var {disabled} = this.props
+    var {disabled} = this.props;
     var style = [
       styles.text,
       disabled ? styles.disabledText : null,
