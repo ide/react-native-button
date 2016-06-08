@@ -1,12 +1,11 @@
-'use strict';
+import React, { Children } from 'react';
 
-var React = require('react');
 
-function coalesceNonElementChildren(children, coalesceNodes) {
+export default function coalesceNonElementChildren(children, coalesceNodes) {
   var coalescedChildren = [];
 
   var contiguousNonElements = [];
-  React.Children.forEach(children, (child) => {
+  Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) {
       contiguousNonElements.push(child);
       return;
@@ -30,5 +29,3 @@ function coalesceNonElementChildren(children, coalesceNodes) {
 
   return coalescedChildren;
 }
-
-module.exports = coalesceNonElementChildren;
