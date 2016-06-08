@@ -1,29 +1,19 @@
-'use strict';
-
-var React = require('react');
-var {
-  PropTypes,
-} = React;
-var ReactNative = require('react-native');
-var {
+import React, { Component, PropTypes } from 'react';
+import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} = ReactNative;
+} from 'react-native';
 
-var coalesceNonElementChildren = require('./coalesceNonElementChildren');
+import coalesceNonElementChildren from './coalesceNonElementChildren';
 
-var systemButtonOpacity = 0.2;
+const systemButtonOpacity = 0.2;
 
-var Button = React.createClass({
-  propTypes: {
-    ...TouchableOpacity.propTypes,
-    containerStyle: View.propTypes.style,
-    disabled: PropTypes.bool,
-    style: Text.propTypes.style,
-    styleDisabled: Text.propTypes.style,
-  },
+export default class Button extends Component {
+    constructor(props) {
+    super(props);
+  }
 
   render() {
     var touchableProps = {
@@ -41,7 +31,7 @@ var Button = React.createClass({
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
-  },
+  }
 
   _renderGroupedChildren() {
     var {disabled} = this.props
@@ -68,7 +58,7 @@ var Button = React.createClass({
       default:
         return <View style={styles.group}>{children}</View>;
     }
-  },
+  }
 
   _computeActiveOpacity() {
     if (this.props.disabled) {
@@ -77,10 +67,16 @@ var Button = React.createClass({
     return this.props.activeOpacity != null ?
       this.props.activeOpacity :
       systemButtonOpacity;
-  },
-});
-
-var styles = StyleSheet.create({
+  }
+};
+Button.propTypes = {
+      ...TouchableOpacity.propTypes,
+    containerStyle: View.propTypes.style,
+    disabled: PropTypes.bool,
+    style: Text.propTypes.style,
+    styleDisabled: Text.propTypes.style,
+};
+const styles = StyleSheet.create({
   text: {
     color: '#007aff',
     fontFamily: '.HelveticaNeueInterface-MediumP4',
@@ -97,5 +93,3 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-module.exports = Button;
