@@ -11,12 +11,16 @@ import coalesceNonElementChildren from './coalesceNonElementChildren';
 const systemButtonOpacity = 0.2;
 
 export default class Button extends Component {
-    constructor(props) {
-    super(props);
-  }
+  static propTypes = {
+    ...TouchableOpacity.propTypes,
+    containerStyle: View.propTypes.style,
+    disabled: PropTypes.bool,
+    style: Text.propTypes.style,
+    styleDisabled: Text.propTypes.style,
+  };
 
   render() {
-    var touchableProps = {
+    let touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
     };
     if (!this.props.disabled) {
@@ -34,15 +38,15 @@ export default class Button extends Component {
   }
 
   _renderGroupedChildren() {
-    var {disabled} = this.props;
-    var style = [
+    let { disabled } = this.props;
+    let style = [
       styles.text,
       disabled ? styles.disabledText : null,
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
 
-    var children = coalesceNonElementChildren(this.props.children, (children, index) => {
+    let children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
         <Text key={index} style={style}>
           {children}
@@ -69,13 +73,7 @@ export default class Button extends Component {
       systemButtonOpacity;
   }
 };
-Button.propTypes = {
-      ...TouchableOpacity.propTypes,
-    containerStyle: View.propTypes.style,
-    disabled: PropTypes.bool,
-    style: Text.propTypes.style,
-    styleDisabled: Text.propTypes.style,
-};
+
 const styles = StyleSheet.create({
   text: {
     color: '#007aff',
