@@ -29,6 +29,9 @@ export default class Button extends Component {
       touchableProps.onPressIn = this.props.onPressIn;
       touchableProps.onPressOut = this.props.onPressOut;
       touchableProps.onLongPress = this.props.onLongPress;
+      touchableProps.delayPressIn = this.props.delayPressIn;
+      touchableProps.delayPressOut = this.props.delayPressOut;
+      touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
     return (
