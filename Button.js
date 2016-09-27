@@ -83,7 +83,7 @@ export default class Button extends Component {
 const styles = StyleSheet.create({
   text: {
     color: '#007aff',
-    fontFamily: '.HelveticaNeueInterface-MediumP4',
+    fontFamily: 'HelveticaNeue-Medium',
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
