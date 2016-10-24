@@ -4,7 +4,7 @@ A button for React apps
 # Installation
 
 ```
-  $ npm install react-native-button --save
+$ npm install react-native-button --save
 ```
 
 # Usage
