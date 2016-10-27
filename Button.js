@@ -20,7 +20,7 @@ export default class Button extends Component {
   };
 
   render() {
-    let touchableProps = {
+    const touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
     };
     if (!this.props.disabled) {
@@ -44,15 +44,15 @@ export default class Button extends Component {
   }
 
   _renderGroupedChildren() {
-    let { disabled } = this.props;
-    let style = [
+    const { disabled } = this.props;
+    const style = [
       styles.text,
       disabled ? styles.disabledText : null,
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
 
-    let children = coalesceNonElementChildren(this.props.children, (child, index) => {
+    const children = coalesceNonElementChildren(this.props.children, (child, index) => {
       return (
         <Text key={index} style={style}>
           {child}
