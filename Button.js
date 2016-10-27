@@ -52,10 +52,10 @@ export default class Button extends Component {
       disabled ? this.props.styleDisabled : null,
     ];
 
-    let children = coalesceNonElementChildren(this.props.children, (children, index) => {
+    let children = coalesceNonElementChildren(this.props.children, (child, index) => {
       return (
         <Text key={index} style={style}>
-          {children}
+          {child}
         </Text>
       );
     });
