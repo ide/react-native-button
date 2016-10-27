@@ -54,7 +54,7 @@ export default class Button extends Component {
 
     const children = coalesceNonElementChildren(this.props.children, (child, index) => {
       return (
-        <Text key={index} style={style}>
+        <Text key={index} {...{ style }}>
           {child}
         </Text>
       );
