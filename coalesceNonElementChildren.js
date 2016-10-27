@@ -1,10 +1,9 @@
 import React, { Children } from 'react';
 
-
 export default function coalesceNonElementChildren(children, coalesceNodes) {
-  var coalescedChildren = [];
+  const coalescedChildren = [];
+  let contiguousNonElements = [];
 
-  var contiguousNonElements = [];
   Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) {
       contiguousNonElements.push(child);
