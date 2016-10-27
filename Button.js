@@ -71,12 +71,13 @@ export default class Button extends Component {
   }
 
   _computeActiveOpacity() {
-    if (this.props.disabled) {
+    const { activeOpacity, disabled} = this.props;
+
+    if (disabled) {
       return 1;
     }
-    return this.props.activeOpacity != null ?
-      this.props.activeOpacity :
-      systemButtonOpacity;
+
+    return activeOpacity || systemButtonOpacity;
   }
 };
 
