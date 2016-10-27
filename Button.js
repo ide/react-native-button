@@ -8,9 +8,14 @@ import {
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
 
-const systemButtonOpacity = 0.2;
-
 export default class Button extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.systemButtonOpacity = 0.2;
+  }
+
   static propTypes = {
     ...TouchableOpacity.propTypes,
     containerStyle: View.propTypes.style,
@@ -71,13 +76,13 @@ export default class Button extends Component {
   }
 
   _computeActiveOpacity() {
-    const { activeOpacity, disabled} = this.props;
+    const { activeOpacity, disabled } = this.props;
 
     if (disabled) {
       return 1;
     }
 
-    return activeOpacity || systemButtonOpacity;
+    return activeOpacity || this.systemButtonOpacity;
   }
 };
 
