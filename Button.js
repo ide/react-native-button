@@ -8,9 +8,14 @@ import {
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
 
-const systemButtonOpacity = 0.2;
-
 export default class Button extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.systemButtonOpacity = 0.2;
+  }
+
   static propTypes = {
     ...TouchableOpacity.propTypes,
     containerStyle: View.propTypes.style,
@@ -20,7 +25,7 @@ export default class Button extends Component {
   };
 
   render() {
-    let touchableProps = {
+    const touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
     };
     if (!this.props.disabled) {
@@ -44,18 +49,18 @@ export default class Button extends Component {
   }
 
   _renderGroupedChildren() {
-    let { disabled } = this.props;
-    let style = [
+    const { disabled } = this.props;
+    const style = [
       styles.text,
       disabled ? styles.disabledText : null,
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
 
-    let children = coalesceNonElementChildren(this.props.children, (children, index) => {
+    const children = coalesceNonElementChildren(this.props.children, (child, index) => {
       return (
-        <Text key={index} style={style}>
-          {children}
+        <Text key={index} {...{ style }}>
+          {child}
         </Text>
       );
     });
@@ -71,12 +76,13 @@ export default class Button extends Component {
   }
 
   _computeActiveOpacity() {
-    if (this.props.disabled) {
+    const { activeOpacity, disabled } = this.props;
+
+    if (disabled) {
       return 1;
     }
-    return this.props.activeOpacity != null ?
-      this.props.activeOpacity :
-      systemButtonOpacity;
+
+    return activeOpacity || this.systemButtonOpacity;
   }
 };
 
