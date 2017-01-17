@@ -1,14 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-} from 'react-native';
+  View
+} from 'react-native'
 
-import coalesceNonElementChildren from './coalesceNonElementChildren';
+import coalesceNonElementChildren from './coalesceNonElementChildren'
 
-const systemButtonOpacity = 0.2;
+const systemButtonOpacity = 0.2
 
 export default class Button extends Component {
   static propTypes = {
@@ -16,18 +16,18 @@ export default class Button extends Component {
     containerStyle: View.propTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
-    styleDisabled: Text.propTypes.style,
+    styleDisabled: Text.propTypes.style
   };
 
-  render() {
+  render () {
     let touchableProps = {
-      activeOpacity: this._computeActiveOpacity(),
-    };
+      activeOpacity: this._computeActiveOpacity()
+    }
     if (!this.props.disabled) {
-      touchableProps.onPress = this.props.onPress;
-      touchableProps.onPressIn = this.props.onPressIn;
-      touchableProps.onPressOut = this.props.onPressOut;
-      touchableProps.onLongPress = this.props.onLongPress;
+      touchableProps.onPress = this.props.onPress
+      touchableProps.onPressIn = this.props.onPressIn
+      touchableProps.onPressOut = this.props.onPressOut
+      touchableProps.onLongPress = this.props.onLongPress
     }
 
     return (
@@ -35,50 +35,48 @@ export default class Button extends Component {
         {...touchableProps}
         testID={this.props.testID}
         style={this.props.containerStyle}
-        accessibilityTraits="button"
-        accessibilityComponentType="button"
+        accessibilityTraits='button'
+        accessibilityComponentType='button'
       >
         {this._renderGroupedChildren()}
       </TouchableOpacity>
-    );
+    )
   }
 
-  _renderGroupedChildren() {
-    let { disabled } = this.props;
+  _renderGroupedChildren () {
+    let { disabled } = this.props
     let style = [
       styles.text,
       disabled ? styles.disabledText : null,
       this.props.style,
-      disabled ? this.props.styleDisabled : null,
-    ];
+      disabled ? this.props.styleDisabled : null
+    ]
 
     let children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
         <Text key={index} style={style}>
           {children}
         </Text>
-      );
-    });
+      )
+    })
 
     switch (children.length) {
       case 0:
-        return null;
+        return null
       case 1:
-        return children[0];
+        return children[0]
       default:
-        return <View style={styles.group}>{children}</View>;
+        return <View style={styles.group}>{children}</View>
     }
   }
 
-  _computeActiveOpacity() {
+  _computeActiveOpacity () {
     if (this.props.disabled) {
-      return 1;
+      return 1
     }
-    return this.props.activeOpacity != null ?
-      this.props.activeOpacity :
-      systemButtonOpacity;
+    return this.props.activeOpacity != null ? this.props.activeOpacity : systemButtonOpacity
   }
-};
+}
 
 const styles = StyleSheet.create({
   text: {
@@ -86,14 +84,14 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Medium',
     fontSize: 17,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   disabledText: {
-    color: '#dcdcdc',
+    color: '#dcdcdc'
   },
   group: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-});
+    alignItems: 'center'
+  }
+})

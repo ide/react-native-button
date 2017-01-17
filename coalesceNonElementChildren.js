@@ -1,31 +1,30 @@
-import React, { Children } from 'react';
+import React, { Children } from 'react'
 
+export default function coalesceNonElementChildren (children, coalesceNodes) {
+  var coalescedChildren = []
 
-export default function coalesceNonElementChildren(children, coalesceNodes) {
-  var coalescedChildren = [];
-
-  var contiguousNonElements = [];
+  var contiguousNonElements = []
   Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) {
-      contiguousNonElements.push(child);
-      return;
+      contiguousNonElements.push(child)
+      return
     }
 
     if (contiguousNonElements.length) {
       coalescedChildren.push(
         coalesceNodes(contiguousNonElements, coalescedChildren.length)
-      );
-      contiguousNonElements = [];
+      )
+      contiguousNonElements = []
     }
 
-    coalescedChildren.push(child);
-  });
+    coalescedChildren.push(child)
+  })
 
   if (contiguousNonElements.length) {
     coalescedChildren.push(
       coalesceNodes(contiguousNonElements, coalescedChildren.length)
-    );
+    )
   }
 
-  return coalescedChildren;
+  return coalescedChildren
 }
