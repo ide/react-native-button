@@ -13,6 +13,7 @@ const systemButtonOpacity = 0.2;
 export default class Button extends Component {
   static propTypes = {
     ...TouchableOpacity.propTypes,
+    allowFontScaling: Text.propTypes.allowFontScaling,
     containerStyle: View.propTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
@@ -28,7 +29,6 @@ export default class Button extends Component {
       touchableProps.onPressIn = this.props.onPressIn;
       touchableProps.onPressOut = this.props.onPressOut;
       touchableProps.onLongPress = this.props.onLongPress;
-	  touchableProps.allowFontScaling = this.props.allowFontScaling;
     }
 
     return (
@@ -37,8 +37,7 @@ export default class Button extends Component {
         testID={this.props.testID}
         style={this.props.containerStyle}
         accessibilityTraits="button"
-        accessibilityComponentType="button"
-      >
+        accessibilityComponentType="button">
         {this._renderGroupedChildren()}
       </TouchableOpacity>
     );
