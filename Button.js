@@ -28,6 +28,7 @@ export default class Button extends Component {
       touchableProps.onPressIn = this.props.onPressIn;
       touchableProps.onPressOut = this.props.onPressOut;
       touchableProps.onLongPress = this.props.onLongPress;
+	  touchableProps.allowFontScaling = this.props.allowFontScaling;
     }
 
     return (
@@ -54,7 +55,7 @@ export default class Button extends Component {
 
     let children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
-        <Text key={index} style={style}>
+        <Text key={index} style={style} allowFontScaling={this.props.allowFontScaling}>
           {children}
         </Text>
       );
