@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ViewPropTypes
+  ViewPropTypes,
 } from 'react-native';
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
