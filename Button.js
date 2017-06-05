@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ViewPropTypes
 } from 'react-native';
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
@@ -14,7 +15,7 @@ export default class Button extends Component {
   static propTypes = {
     ...TouchableOpacity.propTypes,
     allowFontScaling: Text.propTypes.allowFontScaling,
-    containerStyle: View.propTypes.style,
+    containerStyle: ViewPropTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
