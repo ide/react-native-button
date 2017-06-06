@@ -1,9 +1,13 @@
 # react-native-button
 A button for React apps
 
-# Usage
+# Installation
 
-Install the button from npm with `npm install react-native-button --save`. Then, require it from your app's JavaScript files with `import Button from 'react-native-button'`.
+```
+$ npm install react-native-button --save
+```
+
+# Usage
 
 ```js
 import React, { Component } from 'react';
