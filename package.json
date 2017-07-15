@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/ide/react-native-button/issues"
   },
-  "homepage": "https://github.com/ide/react-native-button"
+  "homepage": "https://github.com/ide/react-native-button",
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
