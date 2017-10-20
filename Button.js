@@ -40,7 +40,7 @@ export default class Button extends Component {
       <TouchableOpacity
         {...touchableProps}
         testID={this.props.testID}
-        style={this.props.containerStyle}
+        style={this.props.disabled ? this.props.containerDisabledStyle : this.props.containerStyle}
         accessibilityTraits="button"
         accessibilityComponentType="button">
         {this._renderGroupedChildren()}
