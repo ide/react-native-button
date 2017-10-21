@@ -41,7 +41,6 @@ export default class Button extends Component {
       touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
-
     return (
       <TouchableOpacity
         {...touchableProps}
