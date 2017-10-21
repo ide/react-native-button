@@ -26,6 +26,11 @@ export default class Button extends Component {
     let touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
     };
+    let containerStyle = [
+      this.props.containerStyle,
+      this.props.disabled ? this.props.disabledContainerStyle : null
+    ];
+
     if (!this.props.disabled) {
       touchableProps.onPress = this.props.onPress;
       touchableProps.onPressIn = this.props.onPressIn;
@@ -36,11 +41,12 @@ export default class Button extends Component {
       touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
+
     return (
       <TouchableOpacity
         {...touchableProps}
         testID={this.props.testID}
-        style={this.props.disabled ? this.props.disabledContainerStyle : this.props.containerStyle}
+        style={containerStyle}
         accessibilityTraits="button"
         accessibilityComponentType="button">
         {this._renderGroupedChildren()}
