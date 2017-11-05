@@ -17,6 +17,8 @@ export default class Button extends Component {
     ...TouchableOpacity.propTypes,
     allowFontScaling: Text.propTypes.allowFontScaling,
     containerStyle: ViewPropTypes.style,
+    containerStyle: ViewPropTypes.style,
+    disabledContainerStyle: ViewPropTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
@@ -26,6 +28,11 @@ export default class Button extends Component {
     let touchableProps = {
       activeOpacity: this._computeActiveOpacity(),
     };
+    let containerStyle = [
+      this.props.containerStyle,
+      this.props.disabled ? this.props.disabledContainerStyle : null
+    ];
+
     if (!this.props.disabled) {
       touchableProps.onPress = this.props.onPress;
       touchableProps.onPressIn = this.props.onPressIn;
@@ -40,7 +47,7 @@ export default class Button extends Component {
       <TouchableOpacity
         {...touchableProps}
         testID={this.props.testID}
-        style={this.props.containerStyle}
+        style={containerStyle}
         accessibilityTraits="button"
         accessibilityComponentType="button">
         {this._renderGroupedChildren()}
