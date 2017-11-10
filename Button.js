@@ -17,7 +17,6 @@ export default class Button extends Component {
     ...TouchableOpacity.propTypes,
     allowFontScaling: Text.propTypes.allowFontScaling,
     containerStyle: ViewPropTypes.style,
-    containerStyle: ViewPropTypes.style,
     disabledContainerStyle: ViewPropTypes.style,
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
