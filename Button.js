@@ -15,6 +15,7 @@ const systemButtonOpacity = 0.2;
 export default class Button extends Component {
   static propTypes = {
     ...TouchableOpacity.propTypes,
+    accessibilityLabel: PropTypes.string,
     allowFontScaling: Text.propTypes.allowFontScaling,
     containerStyle: ViewPropTypes.style,
     disabledContainerStyle: ViewPropTypes.style,
@@ -47,6 +48,7 @@ export default class Button extends Component {
         {...touchableProps}
         testID={this.props.testID}
         style={containerStyle}
+        accessibilityLabel={this.props.accessibilityLabel}
         accessibilityTraits="button"
         accessibilityComponentType="button">
         {this._renderGroupedChildren()}
