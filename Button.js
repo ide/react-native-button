@@ -22,6 +22,7 @@ export default class Button extends Component {
     disabled: PropTypes.bool,
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
+    childGroupStyle: ViewPropTypes.style,
   };
 
   render() {
@@ -64,6 +65,10 @@ export default class Button extends Component {
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
+    let childGroupStyle = [
+      styles.group,
+      this.props.childGroupStyle,
+    ];
 
     let children = coalesceNonElementChildren(this.props.children, (children, index) => {
       return (
@@ -79,7 +84,7 @@ export default class Button extends Component {
       case 1:
         return children[0];
       default:
-        return <View style={styles.group}>{children}</View>;
+        return <View style={childGroupStyle}>{children}</View>;
     }
   }
 
