@@ -34,7 +34,7 @@ The React packager will include the Button component in your app's JS package an
 
 ## Disabled prop usage
 
-You can control a button's state by setting `disabled` prop value in this way by :
+You can control a button's state by setting `disabled` prop value in this way:
 
 ```js
 import React, { Component } from 'react';
