@@ -25,6 +25,8 @@
     "react-native": "*"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "typescript": "^3.5.3"
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
   }
 }
