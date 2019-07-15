@@ -1,31 +1,30 @@
-import React, { Children } from 'react';
+import React, {Children} from 'react'
 
-
+// @ts-ignore
 export default function coalesceNonElementChildren(children, coalesceNodes) {
-  var coalescedChildren = [];
+    let coalescedChildren = [];
+    let contiguousNonElements: React.ReactText[] = [];
+    Children.forEach(children, (child: React.ReactChild) => {
+        if (!React.isValidElement(child)) {
+            contiguousNonElements.push(child);
+            return;
+        }
 
-  var contiguousNonElements = [];
-  Children.forEach(children, (child) => {
-    if (!React.isValidElement(child)) {
-      contiguousNonElements.push(child);
-      return;
-    }
+        if (contiguousNonElements.length) {
+            coalescedChildren.push(
+                coalesceNodes(contiguousNonElements, coalescedChildren.length)
+            );
+            contiguousNonElements = [];
+        }
+
+        coalescedChildren.push(child);
+    });
 
     if (contiguousNonElements.length) {
-      coalescedChildren.push(
-        coalesceNodes(contiguousNonElements, coalescedChildren.length)
-      );
-      contiguousNonElements = [];
+        coalescedChildren.push(
+            coalesceNodes(contiguousNonElements, coalescedChildren.length)
+        );
     }
 
-    coalescedChildren.push(child);
-  });
-
-  if (contiguousNonElements.length) {
-    coalescedChildren.push(
-      coalesceNodes(contiguousNonElements, coalescedChildren.length)
-    );
-  }
-
-  return coalescedChildren;
+    return coalescedChildren;
 }
