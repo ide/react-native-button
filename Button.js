@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableNativeFeedback,
   View,
-  ViewPropTypes,
+  ViewPropTypes
 } from 'react-native';
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
@@ -23,6 +25,7 @@ export default class Button extends Component {
     style: Text.propTypes.style,
     styleDisabled: Text.propTypes.style,
     childGroupStyle: ViewPropTypes.style,
+    androidBackground: PropTypes.object,
   };
 
   render() {
@@ -44,16 +47,45 @@ export default class Button extends Component {
       touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
-    return (
-      <TouchableOpacity
-        {...touchableProps}
-        testID={this.props.testID}
-        style={containerStyle}
-        accessibilityLabel={this.props.accessibilityLabel}
-        accessibilityRole="button">
-        {this._renderGroupedChildren()}
-      </TouchableOpacity>
-    );
+    if (Platform.OS === 'ios') {
+      return (
+        <TouchableOpacity
+          {...touchableProps}
+          testID={this.props.testID}
+          style={containerStyle}
+          accessibilityLabel={this.props.accessibilityLabel}
+          accessibilityRole="button">
+          {this._renderGroupedChildren()}
+        </TouchableOpacity>
+      );
+    } else {
+      const background = this.props.androidBackground
+        ? this.props.androidBackground
+        : TouchableNativeFeedback.SelectableBackground();
+
+      let padding = 0;
+      if (containerStyle[0].padding) {
+        padding = containerStyle[0].padding;
+        const fixedStyle = Object.assign({}, containerStyle[0], {padding: 0});
+        containerStyle[0] = fixedStyle;
+      }
+
+      return (
+        <View style={containerStyle}>
+          <TouchableNativeFeedback
+            {...touchableProps}
+            style={{flex: 1}}
+            testID={this.props.testID}
+            accessibilityLabel={this.props.accessibilityLabel}
+            accessibilityRole="button"
+            background={background}>
+            <View style={{padding: padding}}>
+              {this._renderGroupedChildren()}
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+      );
+    }
   }
 
   _renderGroupedChildren() {
