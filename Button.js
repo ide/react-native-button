@@ -64,7 +64,7 @@ export default class Button extends Component {
         : TouchableNativeFeedback.SelectableBackground();
 
       let padding = 0;
-      if (containerStyle[0].padding) {
+      if (containerStyle[0] && containerStyle[0].padding) {
         padding = containerStyle[0].padding;
         const fixedStyle = Object.assign({}, containerStyle[0], {padding: 0});
         containerStyle[0] = fixedStyle;
