@@ -1,5 +1,5 @@
 # react-native-button
-A button for React apps
+A button for apps made with react-native.
 
 # Usage
 
