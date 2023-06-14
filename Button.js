@@ -104,9 +104,7 @@ export default class Button extends Component {
       this.props.childGroupStyle,
     ];
 
-    let children = coalesceNonElementChildren(
-      this.props.children,
-      (children, index) => {
+    let children = coalesceNonElementChildren(this.props.children, (children, index) => {
         return (
           <Text key={index} style={style} allowFontScaling={this.props.allowFontScaling}>
             {children}
@@ -128,8 +126,8 @@ export default class Button extends Component {
     if (this.props.disabled) {
       return 1;
     }
-    return this.props.activeOpacity != null ? 
-      this.props.activeOpacity : 
+    return this.props.activeOpacity != null ?
+      this.props.activeOpacity :
       systemButtonOpacity;
   }
 };
