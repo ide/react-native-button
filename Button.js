@@ -82,7 +82,7 @@ export default class Button extends Component {
             accessibilityLabel={this.props.accessibilityLabel}
             accessibilityRole="button"
             background={background}>
-            <View style={{ padding: padding }}>
+            <View style={{padding: padding}}>
               {this._renderGroupedChildren()}
             </View>
           </TouchableNativeFeedback>
@@ -100,24 +100,19 @@ export default class Button extends Component {
       disabled ? this.props.styleDisabled : null,
     ];
     let childGroupStyle = [
-      styles.group, 
-      this.props.childGroupStyle
+      styles.group,
+      this.props.childGroupStyle,
     ];
 
     let children = coalesceNonElementChildren(
       this.props.children,
       (children, index) => {
         return (
-          <Text
-            key={index}
-            style={style}
-            allowFontScaling={this.props.allowFontScaling}
-          >
+          <Text key={index} style={style} allowFontScaling={this.props.allowFontScaling}>
             {children}
           </Text>
         );
-      }
-    );
+      });
 
     switch (children.length) {
       case 0:
