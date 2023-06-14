@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   View,
-} from "react-native";
+} from 'react-native';
 import {
   ViewPropTypes,
   TextPropTypes,
-} from "deprecated-react-native-prop-types";
+} from 'deprecated-react-native-prop-types';
 
-import coalesceNonElementChildren from "./coalesceNonElementChildren";
+import coalesceNonElementChildren from './coalesceNonElementChildren';
 
 const systemButtonOpacity = 0.2;
 
@@ -37,7 +37,7 @@ export default class Button extends Component {
     };
     let containerStyle = [
       this.props.containerStyle,
-      this.props.disabled ? this.props.disabledContainerStyle : null,
+      this.props.disabled ? this.props.disabledContainerStyle : null
     ];
 
     if (!this.props.disabled) {
@@ -50,15 +50,14 @@ export default class Button extends Component {
       touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       return (
         <TouchableOpacity
           {...touchableProps}
           testID={this.props.testID}
           style={containerStyle}
           accessibilityLabel={this.props.accessibilityLabel}
-          accessibilityRole="button"
-        >
+          accessibilityRole="button">
           {this._renderGroupedChildren()}
         </TouchableOpacity>
       );
@@ -70,7 +69,7 @@ export default class Button extends Component {
       let padding = 0;
       if (containerStyle[0] && containerStyle[0].padding) {
         padding = containerStyle[0].padding;
-        const fixedStyle = Object.assign({}, containerStyle[0], { padding: 0 });
+        const fixedStyle = Object.assign({}, containerStyle[0], {padding: 0});
         containerStyle[0] = fixedStyle;
       }
 
@@ -78,12 +77,11 @@ export default class Button extends Component {
         <View style={containerStyle}>
           <TouchableNativeFeedback
             {...touchableProps}
-            style={{ flex: 1 }}
+            style={{flex: 1}}
             testID={this.props.testID}
             accessibilityLabel={this.props.accessibilityLabel}
             accessibilityRole="button"
-            background={background}
-          >
+            background={background}>
             <View style={{ padding: padding }}>
               {this._renderGroupedChildren()}
             </View>
@@ -101,7 +99,10 @@ export default class Button extends Component {
       this.props.style,
       disabled ? this.props.styleDisabled : null,
     ];
-    let childGroupStyle = [styles.group, this.props.childGroupStyle];
+    let childGroupStyle = [
+      styles.group, 
+      this.props.childGroupStyle
+    ];
 
     let children = coalesceNonElementChildren(
       this.props.children,
@@ -132,25 +133,25 @@ export default class Button extends Component {
     if (this.props.disabled) {
       return 1;
     }
-    return this.props.activeOpacity != null
-      ? this.props.activeOpacity
-      : systemButtonOpacity;
+    return this.props.activeOpacity != null ? 
+      this.props.activeOpacity : 
+      systemButtonOpacity;
   }
-}
+};
 
 const styles = StyleSheet.create({
   text: {
-    color: "#007aff",
+    color: '#007aff',
     fontSize: 17,
-    fontWeight: "500",
-    textAlign: "center",
+    fontWeight: '500',
+    textAlign: 'center',
   },
   disabledText: {
-    color: "#dcdcdc",
+    color: '#dcdcdc',
   },
   group: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
