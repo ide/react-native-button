@@ -105,12 +105,12 @@ export default class Button extends Component {
     ];
 
     let children = coalesceNonElementChildren(this.props.children, (children, index) => {
-        return (
-          <Text key={index} style={style} allowFontScaling={this.props.allowFontScaling}>
-            {children}
-          </Text>
-        );
-      });
+      return (
+        <Text key={index} style={style} allowFontScaling={this.props.allowFontScaling}>
+          {children}
+        </Text>
+      );
+    });
 
     switch (children.length) {
       case 0:
