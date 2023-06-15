@@ -1,4 +1,8 @@
 import PropTypes from 'prop-types';
+import {
+  ViewPropTypes,
+  TextPropTypes,
+} from 'deprecated-react-native-prop-types';
 import React, { Component } from 'react';
 import {
   Platform,
@@ -8,10 +12,6 @@ import {
   TouchableNativeFeedback,
   View,
 } from 'react-native';
-import {
-  ViewPropTypes,
-  TextPropTypes,
-} from 'deprecated-react-native-prop-types';
 
 import coalesceNonElementChildren from './coalesceNonElementChildren';
 
